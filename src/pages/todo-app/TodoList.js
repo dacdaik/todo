@@ -1,6 +1,9 @@
 import React , { Component } from "react";
 
 export default class TodoList extends Component {
+  constructor(props) {
+    super(props);
+  }
     render(){
         return(
             <section className="main" data-reactid=".0.1">
@@ -23,11 +26,12 @@ export default class TodoList extends Component {
                   <input
                     className="toggle"
                     type="checkbox"
-                    defaultChecked={this.props.isActive}
+                    // defaultChecked={this.props.isActive}
                     onClick={this.props.changeActive}
                     data-reactid=".0.1.2.$bb632cfd-6960-41f0-a68e-5387c4a20654.0.0"
                   />
-                  <label data-reactid=".0.1.2.$bb632cfd-6960-41f0-a68e-5387c4a20654.0.1">
+                  <label data-reactid=".0.1.2.$bb632cfd-6960-41f0-a68e-5387c4a20654.0.1"
+                  style={!this.props.isActive === true ? { color: "pink" } : { color: "red" }}>
                     {this.props.content}
                   </label>
                   <button

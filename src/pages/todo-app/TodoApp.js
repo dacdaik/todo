@@ -9,11 +9,11 @@ export default class TodoApp extends Component {
     super(props);
     this.state = {
       listTodos: [
-        { id: 1, content: 'ăn sáng', isActive: true, isComplete: false },
-        { id: 2, content: 'ăn trưa', isActive: true, isComplete: false },
+        { id: 1, content: 'ăn sáng', isActive: false, isComplete: false },
+        { id: 2, content: 'ăn trưa', isActive: false, isComplete: false },
         { id: 3, content: 'ăn tối', isActive: false, isComplete: true },
       ],
-      content:""
+      style:"",
     };
   }
   changeInput = (event) => {
@@ -40,7 +40,7 @@ export default class TodoApp extends Component {
     }));
   }
 
-  deleteItem = (item) => {
+  delTodo = (item) => {
     this.setState((prevState) => ({
       ...prevState,
       listTodos: this.state.listTodos.filter((it) => {
@@ -51,19 +51,26 @@ export default class TodoApp extends Component {
     }));
   }
 
-  changeActive = (item) => {
-    this.setState((prevState) => ({
-      ...prevState,
-      listTodos: this.state.listTodos.filter((it) => {
-        if (it.isActive === true) {
-          console.log("true");;
-        } else {
-          console.log("false");
-        }
-      }),
-    }));
+  changeActive = () => {
+    this.setState({
+      isActive: !this.state.isActive,
+    })
+    if (!this.state.isActive === true) {
+      this.setState((prevState) => ({
+        ...prevState,
+        style: "#red",
+      }))
+      console.log(this.state.style);
+      ;
+    } else {
+      this.setState((prevState) => ({
+        ...prevState,
+        style: "#black",
+      }))
+      console.log(this.state.style);
+    };
+    // console.log(!this.state.isActive);
   }
-
 
   render() {
     return (
@@ -79,8 +86,9 @@ export default class TodoApp extends Component {
               content = {item.content}
               isActive = {item.isActive}
               isComplete = {item.isComplete}
-              delTodo = {() => this.deleteItem(item)}
-              changeActive = {() => this.changeActive}
+              delTodo = {() => this.delTodo(item)}
+              changeActive = {() => this.changeActive()}
+              // style= {() => this.changeActive()}
                />
             )})
           }

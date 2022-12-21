@@ -3,6 +3,7 @@ import "./App.css";
 import CrudAxiosExample from "./pages/crud-axios-example/crud-axios-example";
 import Form from "./pages/form/Form";
 import TodoApp from "./pages/todo-app/TodoApp";
+import TodoHook from "./pages/Todonew/TodoHook";
 
 class App extends React.Component {
   constructor(props) {
@@ -15,7 +16,8 @@ class App extends React.Component {
       <>
         {/* <CrudAxiosExample /> */}
         {/* <Form /> */}
-        <TodoApp />
+        {/* <TodoApp /> */}
+        <TodoHook />
       </>
     );
   }
